@@ -4,6 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>flask-pwa-example</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/static/manifest.json">
+    <script src="/static/service-worker.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/static/service-worker.js')
+            .then((registration) => {
+              console.log('-- success');
+            }, (error) => {
+              console.log('-- error');
+            })
+        });
+      }
+    </script>
   </head>
   <body>
     <div>flask-pwa-example</div>
